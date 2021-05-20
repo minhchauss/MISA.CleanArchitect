@@ -18,7 +18,7 @@ namespace MISA.CukCuk.Core.Services
         public int Insert(Customer customer)
         {
             ValidateCustomer(customer);
-            throw new NotImplementedException();
+            return 1;
         }
 
         public int Update(Customer customer, Guid customerId)

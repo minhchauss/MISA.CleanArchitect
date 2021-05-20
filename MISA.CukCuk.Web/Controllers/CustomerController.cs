@@ -14,8 +14,8 @@ namespace MISA.CukCuk.Web.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        ICustomerService _customerService;
-        ICustomerRepository _customerRepository;
+        readonly ICustomerService _customerService;
+        readonly ICustomerRepository _customerRepository;
         public CustomerController(ICustomerRepository customerRepository, ICustomerService customerService)
         {
             _customerRepository = customerRepository;
@@ -34,7 +34,7 @@ namespace MISA.CukCuk.Web.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            
+
             var customers = _customerRepository.GetAll();
             return Ok(customers);
         }

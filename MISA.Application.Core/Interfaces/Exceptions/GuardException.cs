@@ -8,9 +8,9 @@ namespace MISA.CukCuk.Core.Interfaces.Exceptions
 {
    public class GuardException<Entity> :Exception
     {
-        public GuardException(string msg, Entity entity):base(msg)
+        public GuardException(string msg):base(msg)
         {
-            this.Data.Add(1, entity);
+           
         }
     }
 }

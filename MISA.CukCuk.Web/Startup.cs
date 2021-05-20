@@ -37,6 +37,7 @@ namespace MISA.CukCuk.Web
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MISA.CukCuk.Web", Version = "v1" });
             });
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            //services.AddScoped<ICustomerRepository, CustomerProRepository>();
             services.AddScoped<ICustomerService, CustomerService >();
         }
 

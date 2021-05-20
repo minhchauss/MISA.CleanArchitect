@@ -9,11 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MISA.CukCuk.Core", "MISA.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MISA.CukCuk.Infrastructure", "MISA.CukCuk.Infrastructure\MISA.CukCuk.Infrastructure.csproj", "{1887A13C-B526-437E-8CCE-4A7AA6D556CD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C16556D-088F-4CE8-849B-236DF9DAF8B8}"
-	ProjectSection(SolutionItems) = preProject
-		Các bước dựng project.txt = Các bước dựng project.txt
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
