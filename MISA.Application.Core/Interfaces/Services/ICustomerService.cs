@@ -13,11 +13,27 @@ namespace MISA.CukCuk.Core.Interfaces.Services
     /// Created by CMChau (19/05/2021)
     public interface ICustomerService
     {
-        IEnumerable<Customer> GetAll();
-        IEnumerable<Customer> GetPaging(int pageIndex, int pageSize);
-        Customer GetById(Guid customerId);
+        /// <summary>
+        /// Thêm mới 1 khách hàng
+        /// </summary>
+        /// <param name="customer">thông tin của 1 khách hang</param>
+        /// <returns>Số dòng đã thêm được vào database</returns>
+        /// Created by CMChau (19/05/2021)
         int Insert(Customer customer);
+        /// <summary>
+        /// Thay đổi thông tin của 1 khách hàng
+        /// </summary>
+        /// <param name="customer">Thông tin của khách hàng</param>
+        /// <param name="customerId">Id của khách hàng cần sửa</param>
+        /// <returns>Số dòng đã update trong database</returns>
+        /// Created by CMChau (19/05/2021)
         int Update(Customer customer, Guid customerId);
-        int Delete(Guid customerId);
+        /// <summary>
+        /// Kiểm tra trùng CustomerCode
+        /// </summary>
+        /// <param name="customerCOde">Mã khách hàng</param>
+        /// <returns> true/false</returns>
+        /// Created by CMChau (19/05/2021)
+        bool CheckCustomerCodeExist(string customerCOde);
     }
 }
