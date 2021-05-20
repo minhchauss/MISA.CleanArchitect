@@ -55,5 +55,42 @@ namespace MISA.CukCuk.Web.Controllers
             int rowAffect = _customerService.Insert(customer);
             return Ok(rowAffect);
         }
+        /// <summary>
+        /// Lấy thông tin của 1 khách hàng
+        /// </summary>
+        /// <param name="id">Id khách hàng</param>
+        /// <returns>
+        /// 200 - Dữ liệu khách hàng
+        /// 204 - Không có dữ liệu
+        /// 400 - Dữ liệu không hợp lệ
+        /// 500 - Exception
+        /// </returns>
+        /// Created by CMChau (20/05/2021)
+        [HttpGet("{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            Customer customer = _customerRepository.GetById(id);
+            if (customer != null)
+                return Ok(customer);
+            return NoContent();
+        }
+        /// <summary>
+        /// Xóa bản ghi của 1 khách hàng theo Id
+        /// </summary>
+        /// <param name="id">Id khách hàng</param>
+        /// 200 - Dữ liệu khách hàng
+        /// 204 - Không có dữ liệu
+        /// 400 - Dữ liệu không hợp lệ
+        /// 500 - Exception
+        /// <returns>Số dòng đã xóa được</returns>
+        [HttpDelete("{id}")]
+        public IActionResult DeleteById(Guid id)
+        {
+            int rowAffect = _customerRepository.Delete(id);
+            if(rowAffect>0)
+                return Ok();
+            return NoContent();
+             
+        }
     }
 }
