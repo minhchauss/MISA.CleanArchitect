@@ -28,7 +28,11 @@ namespace MISA.CukCuk.Infrastructure.CustomerRepos.Repository
 
         public Customer GetById(Guid customerId)
         {
-            throw new NotImplementedException();
+            Customer customer = new Customer();
+            customer.FullName = "CMChau";
+            customer.CustomerCode = "MF863";
+            customer.Address = "Hà Nội";
+            return customer;
         }
 
         public IEnumerable<Customer> GetPaging(int pageIndex, int pageSize)

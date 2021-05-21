@@ -43,7 +43,7 @@ namespace MISA.CukCuk.Web.Controllers
         /// </summary>
         /// <param name="customer">Dữ liệu khách hàng</param>
         /// <returns>
-        /// 200 - Dữ liệu tất cả khách hàng
+        /// 200 - Thêm mới thành công
         /// 204 - Không có dữ liệu
         /// 400 - Dữ liệu không hợp lệ
         /// 500 - Exception
@@ -78,7 +78,7 @@ namespace MISA.CukCuk.Web.Controllers
         /// Xóa bản ghi của 1 khách hàng theo Id
         /// </summary>
         /// <param name="id">Id khách hàng</param>
-        /// 200 - Dữ liệu khách hàng
+        /// 200 - Xóa thành công
         /// 204 - Không có dữ liệu
         /// 400 - Dữ liệu không hợp lệ
         /// 500 - Exception
