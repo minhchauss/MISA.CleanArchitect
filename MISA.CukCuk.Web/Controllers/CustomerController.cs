@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MISA.CukCuk.Core.Entities;
+using MISA.CukCuk.Core.Interfaces.Exceptions;
 using MISA.CukCuk.Core.Interfaces.Repository;
 using MISA.CukCuk.Core.Interfaces.Services;
 using System;
@@ -10,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace MISA.CukCuk.Web.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]s")]
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        readonly ICustomerService _customerService;
-        readonly ICustomerRepository _customerRepository;
+        ICustomerService _customerService;
+        ICustomerRepository _customerRepository;
         public CustomerController(ICustomerRepository customerRepository, ICustomerService customerService)
         {
             _customerRepository = customerRepository;
@@ -34,26 +35,8 @@ namespace MISA.CukCuk.Web.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-
             var customers = _customerRepository.GetAll();
             return Ok(customers);
-        }
-        /// <summary>
-        /// Thêm mới khách hàng
-        /// </summary>
-        /// <param name="customer">Dữ liệu khách hàng</param>
-        /// <returns>
-        /// 200 - Thêm mới thành công
-        /// 204 - Không có dữ liệu
-        /// 400 - Dữ liệu không hợp lệ
-        /// 500 - Exception
-        /// </returns>
-        /// Created by CMChau (20/05/2021)
-        [HttpPost]
-        public IActionResult Add(Customer customer)
-        {
-            int rowAffect = _customerService.Insert(customer);
-            return Ok(rowAffect);
         }
         /// <summary>
         /// Lấy thông tin của 1 khách hàng
@@ -75,6 +58,37 @@ namespace MISA.CukCuk.Web.Controllers
             return NoContent();
         }
         /// <summary>
+        /// Thêm mới khách hàng
+        /// </summary>
+        /// <param name="customer">Dữ liệu khách hàng</param>
+        /// <returns>
+        /// 200 - Thêm mới thành công
+        /// 204 - Không có dữ liệu
+        /// 400 - Dữ liệu không hợp lệ
+        /// 500 - Exception
+        /// </returns>
+        /// Created by CMChau (20/05/2021)
+        [HttpPost]
+        public IActionResult Add(Customer customer)
+        {
+            int rowAffect = _customerService.Insert(customer);
+            return Ok(rowAffect);
+        }
+        /// <summary>
+        /// Sửa thông tin 1 khách hàng
+        /// </summary>
+        /// <param name="customer">Thông tin khách hàng</param>
+        /// <param name="id">id khách hàng</param>
+        /// <returns>Số dòng đã sửa</returns>
+        /// Created by CMChau (22/05/2021)
+        [HttpPut("{id}")]
+        public IActionResult Update([FromBody] Customer customer, Guid id)
+        {
+            int rowAffects = _customerService.Update(customer, id);
+            return Ok(rowAffects);
+        }
+
+        /// <summary>
         /// Xóa bản ghi của 1 khách hàng theo Id
         /// </summary>
         /// <param name="id">Id khách hàng</param>
@@ -83,14 +97,15 @@ namespace MISA.CukCuk.Web.Controllers
         /// 400 - Dữ liệu không hợp lệ
         /// 500 - Exception
         /// <returns>Số dòng đã xóa được</returns>
+        /// Created by CMChâu 21/05/2021
         [HttpDelete("{id}")]
         public IActionResult DeleteById(Guid id)
         {
             int rowAffect = _customerRepository.Delete(id);
-            if(rowAffect>0)
+            if (rowAffect > 0)
                 return Ok();
             return NoContent();
-             
+
         }
     }
 }

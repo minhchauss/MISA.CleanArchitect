@@ -1,4 +1,6 @@
 ﻿using MISA.CukCuk.Core.Entities;
+using MISA.CukCuk.Core.Interfaces.Exceptions;
+using MISA.CukCuk.Core.Interfaces.Repository;
 using MISA.CukCuk.Core.Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -10,29 +12,47 @@ namespace MISA.CukCuk.Core.Services
 {
     public class CustomerService : ICustomerService
     {
-        public bool CheckCustomerCodeExist(string customerCOde)
+        ICustomerRepository _customerRepository;
+        public CustomerService(ICustomerRepository customerRepository)
         {
-            throw new NotImplementedException();
+            _customerRepository = customerRepository;
         }
+        //public bool CheckCustomerCodeExist(string customerCode)
+        //{
+        //    throw new ValidateException("Mã khách hàng đã tồn tại");
+        //}
+
+        //public bool CheckDuplicatePhoneNumber(string phoneNumber)
+        //{
+        //    throw new ValidateException("Số điện thoại đã tồn tại");
+        //}
 
         public int Insert(Customer customer)
         {
+            // Duyệt thông tin nhận được
             ValidateCustomer(customer);
-            return 1;
+            return _customerRepository.Insert(customer);
         }
 
         public int Update(Customer customer, Guid customerId)
         {
+            // Duyệt dữ liệu nhận được
             ValidateCustomer(customer);
-            throw new NotImplementedException();
+            return _customerRepository.Update(customer, customerId);
         }
-        /// <summary>
-        /// validate dữ liệu khách hàng
-        /// </summary>
-        /// <param name="customer"></param>
+
+
         void ValidateCustomer(Customer customer)
         {
+
             //Check dữ liệu  khách hàng
+            var isDuplicate = _customerRepository.CheckCustomerCodeExist(customer.CustomerCode);
+            if (isDuplicate == true)
+            {
+                throw new ValidateException("Mã đã tồn tại", customer.GetType().GetProperty("CustomerCode").Name);
+            }
+
         }
+
     }
 }

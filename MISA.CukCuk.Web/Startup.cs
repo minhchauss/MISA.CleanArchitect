@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MISA.CukCuk.Core.Interfaces.Exceptions;
 using MISA.CukCuk.Core.Interfaces.Repository;
 using MISA.CukCuk.Core.Interfaces.Services;
 using MISA.CukCuk.Core.Services;
@@ -31,14 +32,16 @@ namespace MISA.CukCuk.Web
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers(options =>
+     options.Filters.Add(new HttpResponseExceptionFilter()));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MISA.CukCuk.Web", Version = "v1" });
             });
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             //services.AddScoped<ICustomerRepository, CustomerProRepository>();
-            services.AddScoped<ICustomerService, CustomerService >();
+            services.AddScoped<ICustomerService, CustomerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

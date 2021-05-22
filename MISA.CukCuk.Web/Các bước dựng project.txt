@@ -15,3 +15,15 @@
 Core xử lý nội bộ hệ thống
 Infrastructure: tương tác với database và bên thứ 3, validate dữ liệu
 App: nhận request từ client truyền sang infrastructure
+
+
+
+
+Gán các giá trị cho tham số đầu vào của proc bằng cách maping
+lấy ra tất cả properties
+duyệt từng property
+lấy ra value 
+lấy ra name
+
+Customer exception 
+truyền vào resources thay câu thông báo

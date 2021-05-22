@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace MISA.CukCuk.Core.Interfaces.Exceptions
 {
-   public class GuardException<Entity> :Exception
+    public class HttpResponseException : Exception
     {
-        public GuardException(string msg):base(msg)
-        {
-           
-        }
+        public int Status { get; set; } = 500;
+
+        public object Value { get; set; }
     }
 }

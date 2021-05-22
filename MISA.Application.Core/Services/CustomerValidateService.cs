@@ -15,11 +15,18 @@ namespace MISA.CukCuk.Core.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Cập nhật thông tin của khách hàng theo id
+        /// </summary>
+        /// <param name="customer">Thông tin khách hàng</param>
+        /// <param name="customerId">Id khách hàng</param>
+        /// <returns>Số dòng đã cập nhật được</returns>
         public int Update(Customer customer, Guid customerId)
         {
             throw new NotImplementedException();
 
         }
+
         /// <summary>
         /// Check trùng số điện thoại
         /// </summary>
@@ -31,7 +38,8 @@ namespace MISA.CukCuk.Core.Services
             return true;
         }
 
-        public bool CheckCustomerCodeExist(string customerCOde)
+       
+        public bool CheckCustomerCodeExist(string customerCode)
         {
             throw new NotImplementedException();
         }
