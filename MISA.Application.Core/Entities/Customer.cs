@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MISA.CukCuk.Core.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,7 +38,7 @@ namespace MISA.CukCuk.Core.Entities
         /// Giới tính khách hàng
         /// </summary>
         /// Created by CMChau (21/05/2021)
-        public int Gender { get; set; }
+        public Gender? Gender { get; set; }
         /// <summary>
         /// Địa chỉ khách hàng
         /// </summary>
@@ -108,7 +109,9 @@ namespace MISA.CukCuk.Core.Entities
         /// </summary>
         /// Created by CMChau (19/05/2021)
         public string ModifiedBy { get; set; }
-        //public int EntityStates { get; set; } = Enum.EntityState.Update;
+
+        public EntityState EntityState { get; set; } = EntityState.Add;
+
         #endregion
     }
 }

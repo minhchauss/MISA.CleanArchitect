@@ -80,14 +80,14 @@ namespace MISA.CukCuk.Infrastructure.CustomerRepos.Repository
             return rowAffects;
         }
 
-        public bool CheckCustomerCodeExist(string customerCode)
-        {
+        //public bool CheckCustomerCodeExist(string customerCode)
+        //{
 
-            Parameters.Add("@m_CustomerCode", customerCode);
-            var isExist = _dbConnection.ExecuteScalar<bool>("Proc_CheckCustomerCodeExist", Parameters, commandType: CommandType.StoredProcedure);
-            return isExist;
-            ;
-        }
+        //    Parameters.Add("@m_CustomerCode", customerCode);
+        //    var isExist = _dbConnection.ExecuteScalar<bool>("Proc_CheckCustomerCodeExist", Parameters, commandType: CommandType.StoredProcedure);
+        //    return isExist;
+        //    ;
+        //}
 
         //public bool CheckDuplicatePhoneNumber(string phoneNumber)
         //{
@@ -116,11 +116,25 @@ namespace MISA.CukCuk.Infrastructure.CustomerRepos.Repository
 
         public void ValidateCustomer(Customer customer)
         {
-            var isDuplicate = CheckCustomerCodeExist(customer.CustomerCode);
+            var isDuplicate = CheckCustomerCodeExist(customer.CustomerCode,customer.CustomerId);
             if (isDuplicate == true)
             {
                 throw new Exception("Mã đã tồn tại");
             }
+        }
+        /// <summary>
+        /// Check dữ liệu khách hàng
+        /// </summary>
+        /// <param name="customerCode">mã khách hàng</param>
+        /// <param name="customerId">id khách hàng</param>
+        /// <returns>true - dữ liệu hợp lệ, false - dữ liệu không hợp lệ</returns>
+        /// Created by CMChâu 22/05/2021
+        public bool CheckCustomerCodeExist(string customerCode, Guid? customerId = null)
+        {
+            Parameters.Add("@m_CustomerCode", customerCode);
+            Parameters.Add("@m_CustomerId", customerId);
+            var isExists = _dbConnection.ExecuteScalar<bool>("Proc_CheckCustomerCodeExist", param: Parameters, commandType: CommandType.StoredProcedure);
+            return isExists;
         }
     }
 }

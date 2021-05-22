@@ -72,7 +72,7 @@ namespace MISA.CukCuk.Core.Interfaces.Repository
         /// <param name="customerCode">Mã khách hàng</param>
         /// <returns> true - trùng mã, false - không trùng mã</returns>
         /// Created by CMChau (19/05/2021)
-        bool CheckCustomerCodeExist(string customerCode);
+        bool CheckCustomerCodeExist(string customerCode,Guid? customerId=null);
 
         ///// <summary>
         ///// Check trùng số điện thoại

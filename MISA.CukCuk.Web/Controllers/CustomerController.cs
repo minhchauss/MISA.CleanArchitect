@@ -73,7 +73,8 @@ namespace MISA.CukCuk.Web.Controllers
         [HttpPost]
         public IActionResult Add(Customer customer)
         {
-            int rowAffect = _customerService.Insert(customer);
+            customer.EntityState = Core.Enum.EntityState.Add;
+            var rowAffect = _customerService.Insert(customer);
             if (rowAffect > 0)
                 return Ok(rowAffect);
             return NoContent();

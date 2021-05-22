@@ -9,6 +9,7 @@ namespace MISA.CukCuk.Core.Enum
     /// <summary>
     /// Trạng thái của object
     /// </summary>
+    /// Created by CMChau 22/05/2021
     public enum EntityState
     {
         /// <summary>
@@ -24,6 +25,10 @@ namespace MISA.CukCuk.Core.Enum
         /// </summary>
         Delete=3
     }
+    /// <summary>
+    /// Giới tính
+    /// </summary>
+    /// Created by CMChau 22/05/2021
     public enum Gender
     {
         /// <summary>

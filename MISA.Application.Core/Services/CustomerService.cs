@@ -44,14 +44,22 @@ namespace MISA.CukCuk.Core.Services
 
         void ValidateCustomer(Customer customer)
         {
+            var isDuplicate = false;
+            if (customer.EntityState == Enum.EntityState.Add)
+            {
+                //Check dữ liệu  khách hàng
+                isDuplicate = _customerRepository.CheckCustomerCodeExist(customer.CustomerCode);
 
-            //Check dữ liệu  khách hàng
-            var isDuplicate = _customerRepository.CheckCustomerCodeExist(customer.CustomerCode);
+            }
+            else
+            {
+                isDuplicate = _customerRepository.CheckCustomerCodeExist(customer.CustomerCode,customer.CustomerId);
+            }
+
             if (isDuplicate == true)
             {
                 throw new ValidateException("Mã đã tồn tại", customer.GetType().GetProperty("CustomerCode").Name);
             }
-
         }
 
     }

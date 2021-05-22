@@ -33,7 +33,7 @@ namespace MISA.CukCuk.Web
         {
 
             services.AddControllers(options =>
-     options.Filters.Add(new HttpResponseExceptionFilter()));
+            options.Filters.Add(new HttpResponseExceptionFilter()));
 
             services.AddSwaggerGen(c =>
             {
