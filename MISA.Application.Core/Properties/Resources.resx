@@ -118,9 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Erro_Exception" xml:space="preserve">
-    <value>Có lỗi xả ra vui lòng liên hệ MISA để được hỗ trợ</value>
+    <value>Có lỗi xảy ra vui lòng liên hệ MISA để được hỗ trợ</value>
   </data>
   <data name="ValidateMsg_CustomerCodeExist" xml:space="preserve">
     <value>Mã khách hàng đã tồn tại</value>
+  </data>
+  <data name="ValidateMsg_PhoneNumberExist" xml:space="preserve">
+    <value>Số điện thoại đã tồn tại</value>
   </data>
 </root>

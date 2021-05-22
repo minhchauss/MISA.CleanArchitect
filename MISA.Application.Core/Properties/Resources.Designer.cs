@@ -61,7 +61,7 @@ namespace MISA.CukCuk.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Có lỗi xả ra vui lòng liên hệ MISA để được hỗ trợ.
+        ///   Looks up a localized string similar to Có lỗi xảy ra vui lòng liên hệ MISA để được hỗ trợ.
         /// </summary>
         public static string Erro_Exception {
             get {
@@ -75,6 +75,15 @@ namespace MISA.CukCuk.Core.Properties {
         public static string ValidateMsg_CustomerCodeExist {
             get {
                 return ResourceManager.GetString("ValidateMsg_CustomerCodeExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại đã tồn tại.
+        /// </summary>
+        public static string ValidateMsg_PhoneNumberExist {
+            get {
+                return ResourceManager.GetString("ValidateMsg_PhoneNumberExist", resourceCulture);
             }
         }
     }

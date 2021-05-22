@@ -36,7 +36,9 @@ namespace MISA.CukCuk.Web.Controllers
         public IActionResult GetAll()
         {
             var customers = _customerRepository.GetAll();
-            return Ok(customers);
+            if (customers.Count() > 0)
+                return Ok(customers);
+            return NoContent();
         }
         /// <summary>
         /// Lấy thông tin của 1 khách hàng
@@ -72,20 +74,28 @@ namespace MISA.CukCuk.Web.Controllers
         public IActionResult Add(Customer customer)
         {
             int rowAffect = _customerService.Insert(customer);
-            return Ok(rowAffect);
+            if (rowAffect > 0)
+                return Ok(rowAffect);
+            return NoContent();
         }
         /// <summary>
         /// Sửa thông tin 1 khách hàng
         /// </summary>
         /// <param name="customer">Thông tin khách hàng</param>
         /// <param name="id">id khách hàng</param>
+        /// 200 - Sửa thành công
+        /// 204 - Không có dữ liệu
+        /// 400 - Dữ liệu không hợp lệ
+        /// 500 - Exception
         /// <returns>Số dòng đã sửa</returns>
         /// Created by CMChau (22/05/2021)
         [HttpPut("{id}")]
         public IActionResult Update([FromBody] Customer customer, Guid id)
         {
             int rowAffects = _customerService.Update(customer, id);
-            return Ok(rowAffects);
+            if (rowAffects > 0)
+                return Ok(rowAffects);
+            return NoContent();
         }
 
         /// <summary>

@@ -16,7 +16,7 @@ namespace MISA.CukCuk.Core.Interfaces.Exceptions
                 FiledNotValid= Data
 
             };
-            this.Data.Add("1", MsgError);
+            this.Data.Add("Error", MsgError);
         }
     }
 }
